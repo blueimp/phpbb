@@ -2,6 +2,28 @@
 
 ## Setup
 
+### Hostname
+Set the `$SERVER_NAME` variable, which is used for the hostname, so Apache can
+determine the server's fully qualified domain name:
+
+```sh
+export SERVER_NAME='dev.test'
+```
+
+### SSL files
+If you don't require SSL, skip this section and remove the SSL volume mount from
+the `phpbb` container definition in `docker-compose.yml`.
+
+Generate the SSL private key and certificate:
+
+```sh
+mkdir ssl
+openssl req -nodes -x509 -newkey rsa:2048 \
+  -subj "/C=/ST=/L=/O=/OU=/CN=$SERVER_NAME" \
+  -keyout ssl/default.key \
+  -out ssl/default.crt
+```
+
 ### Passwords
 Define passwords for the MySQL root user and the phpBB database user:
 

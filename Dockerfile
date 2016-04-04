@@ -32,8 +32,12 @@ RUN ln -s /etc/apache2/mods-available/rewrite.load \
 RUN ln -s /etc/apache2/mods-available/headers.load \
   /etc/apache2/mods-enabled/headers.load
 
-# Add the Apache security config:
-COPY security.conf /etc/apache2/conf-enabled/
+# Add a custom Apache config:
+COPY apache.conf /etc/apache2/conf-enabled/custom.conf
+
+# Run Apache with HTTPS if the SSL directory is available:
+RUN sed -i 's/-DFOREGROUND/& $(test -d \/etc\/apache2\/ssl \&\& echo -DSSL)/' \
+  /usr/local/bin/apache2-foreground
 
 # Add the PHP config file:
 COPY php.ini /usr/local/etc/php/
