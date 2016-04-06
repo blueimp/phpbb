@@ -1,28 +1,48 @@
 # phpBB Dockerfile
 
 ## Setup
+This setup guide assumes that the `docker-compose.yml` of this repository is
+available in the current directory.
 
 ### Hostname
-Set the `$SERVER_NAME` variable, which is used for the hostname, so Apache can
-determine the server's fully qualified domain name:
+Set the `SERVER_NAME` variable to the fully qualified domain name of your
+server:
 
 ```sh
 export SERVER_NAME='dev.test'
 ```
 
-### SSL files
-If you don't require SSL, skip this section and remove the SSL volume mount from
-the `phpbb` container definition in `docker-compose.yml`.
+This is used as `hostname` option for the phpBB Docker container.
 
-Generate the SSL private key and certificate:
+### SSL files
+If you don't require HTTPS, skip this section and remove the SSL volume mount
+from the `phpbb` container definition in `docker-compose.yml`.
+
+Create the `ssl` directory:
 
 ```sh
 mkdir ssl
+```
+
+For development, generate a private key file and an associated self-signed
+certificate, with the Common Name option matching the `SERVER_NAME` variable set
+previously:
+
+```sh
 openssl req -nodes -x509 -newkey rsa:2048 \
   -subj "/C=/ST=/L=/O=/OU=/CN=$SERVER_NAME" \
   -keyout ssl/default.key \
   -out ssl/default.crt
 ```
+
+For a production system, retrieve an SSL certificate for your domain signed by
+an official Certificate Authority. Combine the issued certificate and any
+intermediate certificates into a file called `default.crt` and put it into the
+`ssl` directory. Add the private key used for the certificate signing request as
+`default.key`:
+
+- `ssl/default.crt`
+- `ssl/default.key`
 
 ### Passwords
 Define passwords for the MySQL root user and the phpBB database user:
@@ -77,7 +97,11 @@ Download the phpBB package and add the install folder to the document root:
 download-phpbb /tmp && mv /tmp/phpBB3/install /var/www/html/
 ```
 
-Exit the phpBB container and open a browser with the docker hostname.
+Exit the phpBB container and open a browser with the server URL:
+
+```sh
+open "http://$SERVER_NAME"
+```
 
 Follow the installation instructions, skipping the upload of `config.php`.  
 
