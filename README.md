@@ -85,19 +85,15 @@ Exit the MySQL CLI (via `quit`).
 ### phpBB
 
 #### Install directory
-Enter the phpBB container:
+Inside of the phpBB container, download the phpBB package and add the install
+folder to the document root:
 
 ```sh
-docker exec -it phpbb_phpbb_1 bash
+docker exec -it phpbb_phpbb_1 sh -c \
+  'download-phpbb /tmp && mv /tmp/phpBB3/install /var/www/html/'
 ```
 
-Download the phpBB package and add the install folder to the document root:
-
-```sh
-download-phpbb /tmp && mv /tmp/phpBB3/install /var/www/html/
-```
-
-Exit the phpBB container and open a browser with the server URL:
+Open a browser with the server URL:
 
 ```sh
 open "http://$SERVER_NAME"
