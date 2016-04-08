@@ -132,7 +132,7 @@ command for the database backup, override the `DB_CP_OPTS` environment variable
 for the `backup` container:
 
 ```sh
-DB_CP_OPTS='--quiet'
+DB_CP_OPTS=''
 ```
 
 To override the options passed to the
@@ -141,7 +141,7 @@ command for the directory backups, override the `DIR_SYNC_OPTS` environment
 variable for the `backup` container:
 
 ```sh
-DIR_SYNC_OPTS='--quiet --size-only --exclude .htaccess --exclude index.htm'
+DIR_SYNC_OPTS='--size-only --exclude .htaccess --exclude index.htm'
 ```
 
 ### Container start
