@@ -258,6 +258,17 @@ database schema and increment the version number:
 docker exec -it phpbb_phpbb_1 php bin/phpbbcli.php db:migrate
 ```
 
+Database migration can also be done automatically on container start by setting
+the environment variable `AUTO_DB_MIGRATE` to `true` for the `phpbb` container:
+
+```yml
+phpbb:
+  # ...
+  environment:
+    - AUTO_DB_MIGRATE=true
+  # ...
+```
+
 ## License
 Released under the [MIT license](http://www.opensource.org/licenses/MIT).
 

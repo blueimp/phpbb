@@ -35,9 +35,8 @@ RUN ln -s /etc/apache2/mods-available/headers.load \
 # Add a custom Apache config:
 COPY apache.conf /etc/apache2/conf-enabled/custom.conf
 
-# Run Apache with HTTPS if the SSL directory is available:
-RUN sed -i 's/-DFOREGROUND/& $(test -d \/etc\/apache2\/ssl \&\& echo -DSSL)/' \
-  /usr/local/bin/apache2-foreground
+# Add the custom Apache run script:
+COPY phpbb-apache2.sh /usr/local/bin/phpbb-apache2
 
 # Add the PHP config file:
 COPY php.ini /usr/local/etc/php/
@@ -69,3 +68,5 @@ ENV \
   DBUSER=phpbb \
   DBPASSWD= \
   TABLE_PREFIX=phpbb_
+
+CMD ["phpbb-apache2"]
