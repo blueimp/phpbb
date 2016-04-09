@@ -83,8 +83,12 @@ The backups are scheduled for 4am (local server time) each night by default.
 To define a different schedule, override the `BACKUP_SCHEDULE` environment
 variable for the `backup` container:
 
-```sh
-BACKUP_SCHEDULE='0 4 * * *'
+```yml
+backup:
+  # ...
+  environment:
+    - BACKUP_SCHEDULE='0 4 * * *'
+  # ...
 ```
 
 The syntax follows the crontab format:
@@ -105,8 +109,12 @@ To provide additional options to the
 which is used for the database backup, set the `MYSQLDUMP_OPTS` environment
 variable for the `backup` container:
 
-```sh
-MYSQLDUMP_OPTS=''
+```yml
+backup:
+  # ...
+  environment:
+    - MYSQLDUMP_OPTS=''
+  # ...
 ```
 
 The following options will be provided automatically:
@@ -122,8 +130,12 @@ databases="${DBNAME:-phpbb}"
 To override the datetime prefix for the database backup, override the
 `DATE_FORMAT` environment variable for the `backup` container:
 
-```sh
-DATE_FORMAT='%Y-%m-%dT%H-%M-%SZ_'
+```yml
+backup:
+  # ...
+  environment:
+    - DATE_FORMAT='%Y-%m-%dT%H-%M-%SZ_'
+  # ...
 ```
 
 To override the options passed to the
@@ -131,8 +143,12 @@ To override the options passed to the
 command for the database backup, override the `DB_CP_OPTS` environment variable
 for the `backup` container:
 
-```sh
-DB_CP_OPTS=''
+```yml
+backup:
+  # ...
+  environment:
+    - DB_CP_OPTS=''
+  # ...
 ```
 
 To override the options passed to the
@@ -140,8 +156,12 @@ To override the options passed to the
 command for the directory backups, override the `DIR_SYNC_OPTS` environment
 variable for the `backup` container:
 
-```sh
-DIR_SYNC_OPTS='--size-only --exclude .htaccess --exclude index.htm'
+```yml
+backup:
+  # ...
+  environment:
+    - DIR_SYNC_OPTS='--size-only --exclude .htaccess --exclude index.htm'
+  # ...
 ```
 
 ### Container start
