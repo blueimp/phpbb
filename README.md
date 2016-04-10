@@ -87,7 +87,7 @@ variable for the `backup` container:
 backup:
   # ...
   environment:
-    - BACKUP_SCHEDULE='0 4 * * *'
+    - "BACKUP_SCHEDULE=0 4 * * *"
   # ...
 ```
 
@@ -113,7 +113,7 @@ variable for the `backup` container:
 backup:
   # ...
   environment:
-    - MYSQLDUMP_OPTS=''
+    - "MYSQLDUMP_OPTS="
   # ...
 ```
 
@@ -134,7 +134,7 @@ To override the datetime prefix for the database backup, override the
 backup:
   # ...
   environment:
-    - DATE_FORMAT='%Y-%m-%dT%H-%M-%SZ_'
+    - "DATE_FORMAT=%Y-%m-%dT%H-%M-%SZ_"
   # ...
 ```
 
@@ -147,7 +147,7 @@ for the `backup` container:
 backup:
   # ...
   environment:
-    - DB_CP_OPTS=''
+    - "DB_CP_OPTS="
   # ...
 ```
 
@@ -160,7 +160,7 @@ variable for the `backup` container:
 backup:
   # ...
   environment:
-    - DIR_SYNC_OPTS='--size-only --exclude .htaccess --exclude index.htm'
+    - "DIR_SYNC_OPTS=--size-only --exclude .htaccess --exclude index.htm"
   # ...
 ```
 
