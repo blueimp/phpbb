@@ -269,6 +269,32 @@ phpbb:
   # ...
 ```
 
+#### Automatic updates
+The `backup` container also contains functionality to send update requests to a
+Trigger URL, if a new phpBB release is available. This functionality can be
+configured with the following environment variables:
+
+```yml
+backup:
+  # ...
+  environment:
+    - "UPDATE_TRIGGER_URL="
+    - "UPDATE_SCHEDULE=0 5 * * *"
+    - BACKUP_BEFORE_UPDATE=true
+  # ...
+```
+
+The update schedule format follows the same format as the backup schedule.  
+Before sending the update request, another backup is initiated by default.
+
+The
+[Docker Hub Remote Build triggers](https://docs.docker.com/docker-hub/builds/#remote-build-triggers)
+provide the URLs to be used for the `UPDATE_TRIGGER_URL` environment variable.
+
+With the Webhooks functionality provided by Docker Hub or
+[Docker Cloud Autoredeploys](https://docs.docker.com/docker-cloud/feature-reference/auto-redeploy/),
+this allows for automatic updates of any phpBB project set up as Docker image.
+
 ## License
 Released under the [MIT license](http://www.opensource.org/licenses/MIT).
 
