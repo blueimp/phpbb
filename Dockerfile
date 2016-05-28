@@ -8,10 +8,13 @@ MAINTAINER Sebastian Tschan <mail@blueimp.net>
 RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update && apt-get install -y \
     libpng-dev \
+    libjpeg-dev \
     imagemagick \
     jq \
     bzip2 \
   # Install required PHP extensions:
+  && docker-php-ext-configure \
+    gd --with-jpeg-dir=/usr/include/ \
   && docker-php-ext-install \
     gd \
     mysqli \
