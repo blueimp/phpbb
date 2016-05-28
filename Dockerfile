@@ -6,7 +6,7 @@ MAINTAINER Sebastian Tschan <mail@blueimp.net>
 
 # Install required packages:
 RUN DEBIAN_FRONTEND=noninteractive \
-  apt-get update && apt-get install -y \
+  apt-get update && apt-get install -y --no-install-recommends \
     libpng-dev \
     libjpeg-dev \
     imagemagick \
