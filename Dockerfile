@@ -18,6 +18,10 @@ RUN DEBIAN_FRONTEND=noninteractive \
   && docker-php-ext-install \
     gd \
     mysqli \
+  # Uninstall obsolete packages:
+  && apt-get autoremove -y \
+    libpng-dev \
+    libjpeg-dev \
   # Remove obsolete files:
   && apt-get clean \
   && rm -rf \
