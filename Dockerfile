@@ -4,9 +4,11 @@ FROM php:5.6-apache
 
 MAINTAINER Sebastian Tschan <mail@blueimp.net>
 
-# Install required packages:
+# Do a dist-upgrade and install the required packages:
 RUN DEBIAN_FRONTEND=noninteractive \
-  apt-get update && apt-get install -y --no-install-recommends \
+  apt-get update \
+  && apt-get dist-upgrade -y \
+  && apt-get install --no-install-recommends --no-install-suggests -y \
     libpng-dev \
     libjpeg-dev \
     imagemagick \
