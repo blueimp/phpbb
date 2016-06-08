@@ -42,14 +42,12 @@ RUN ln -s /etc/apache2/mods-available/headers.load \
 # Add a custom Apache config:
 COPY apache.conf /etc/apache2/conf-enabled/custom.conf
 
-# Add the custom Apache run script:
-COPY phpbb-apache2.sh /usr/local/bin/phpbb-apache2
-
 # Add the PHP config file:
 COPY php.ini /usr/local/etc/php/
 
-# Add a script to download and extract the latest stable phpBB version:
-COPY download-phpbb.sh /usr/local/bin/download-phpbb
+# Add the custom Apache run script
+# and a script to download and extract the latest stable phpBB version:
+COPY bin /usr/local/bin
 
 # Install phpBB into the Apache document root:
 RUN download-phpbb /var/www \
