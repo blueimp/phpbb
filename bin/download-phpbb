@@ -19,8 +19,8 @@ VERSIONS_URL=https://version.phpbb.com/phpbb/versions.json
 RELEASE_BASE_URL=https://www.phpbb.com/files/release/
 
 # Retrieve the latest stable version:
-VERSION=$(curl -sL $VERSIONS_URL |
-  jq -r '.stable["'${BASE_VERSION:-3.1}'"].current')
+VERSION=$(curl -sL "$VERSIONS_URL" |
+  jq -r '.stable["'"${BASE_VERSION:-3.1}"'"].current')
 
 # Download and extract the phpBB package into the given directory:
-curl -L $RELEASE_BASE_URL/phpBB-$VERSION.tar.bz2 | tar xvj -C "${1:-$PWD}"
+curl -L "$RELEASE_BASE_URL/phpBB-$VERSION.tar.bz2" | tar xvj -C "${1:-$PWD}"
