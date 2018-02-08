@@ -2,8 +2,6 @@
 
 FROM php:5.6-apache
 
-MAINTAINER Sebastian Tschan <mail@blueimp.net>
-
 # Do a dist-upgrade and install the required packages:
 RUN export DEBIAN_FRONTEND=noninteractive \
   && apt-get update \
