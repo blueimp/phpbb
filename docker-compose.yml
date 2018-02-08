@@ -17,6 +17,7 @@ services:
     environment:
       - SERVER_NAME
       - DBPASSWD
+      - AUTO_DB_MIGRATE
     volumes:
       - ./ssl:/etc/apache2/ssl
   backup:
