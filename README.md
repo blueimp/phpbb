@@ -296,7 +296,7 @@ With the Webhooks functionality provided by Docker Hub or
 this allows for automatic updates of any phpBB project set up as Docker image.
 
 ## License
-Released under the [MIT license](http://www.opensource.org/licenses/MIT).
+Released under the [MIT license](https://opensource.org/licenses/MIT).
 
 ## Author
 [Sebastian Tschan](https://blueimp.net/)
