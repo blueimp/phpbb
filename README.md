@@ -9,7 +9,7 @@ Set the `SERVER_NAME` variable to the fully qualified domain name of your
 server:
 
 ```sh
-export SERVER_NAME='dev.test'
+export SERVER_NAME='localhost'
 ```
 
 This is used as `hostname` option for the phpBB Docker container.
