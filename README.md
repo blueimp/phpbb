@@ -30,7 +30,7 @@ previously:
 
 ```sh
 openssl req -nodes -x509 -newkey rsa:2048 \
-  -subj "/C=/ST=/L=/O=/OU=/CN=$SERVER_NAME" \
+  -subj "/CN=$SERVER_NAME" \
   -keyout ssl/default.key \
   -out ssl/default.crt
 ```
