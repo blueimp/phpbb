@@ -165,6 +165,12 @@ backup:
 ```
 
 ### Container start
+Set the `PHPBB_INSTALLED` environment variable to `false`:
+
+```sh
+export PHPBB_INSTALLED=false
+```
+
 Start the MySQL and phpBB containers:
 
 ```sh
@@ -195,23 +201,11 @@ GRANT ALL PRIVILEGES
 Exit the MySQL CLI (via `quit`).
 
 ### phpBB
-
-#### Install directory
-Inside of the phpBB container, download the phpBB package and add the install
-folder to the document root:
-
-```sh
-docker exec -it phpbb_phpbb_1 sh -c \
-  'download-phpbb /tmp && mv /tmp/phpBB3/install /var/www/html/'
-```
-
-Open a browser with the server URL:
+Open a browser with the server URL and follow the installation instructions:
 
 ```sh
 open "https://$SERVER_NAME"
 ```
-
-Follow the installation instructions, skipping the upload of `config.php`.  
 
 #### Database configuration
 Use the following database configuration, again replacing "password2" with the
@@ -222,9 +216,9 @@ Setting                       | Value
 Database type                 | mysqli
 Database server hostname      | mysql
 Database server port          |
-Database name                 | phpbb
 Database username             | phpbb
 Database password             | password2
+Database name                 | phpbb
 Prefix for tables in database | phpbb_
 
 #### Email configuration
@@ -244,6 +238,12 @@ Please note that you need to create an
 if you use 2-Step Verification for your Google account.
 
 #### Container recreation
+Unset the `PHPBB_INSTALLED` environment variable:
+
+```sh
+unset PHPBB_INSTALLED
+```
+
 Recreate the phpBB container:
 
 ```sh
