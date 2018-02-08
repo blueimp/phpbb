@@ -15,8 +15,8 @@ services:
       - 80:80
       - 443:443
     environment:
+      - SERVER_NAME
       - DBPASSWD
-    hostname: $SERVER_NAME
     volumes:
       - ./ssl:/etc/apache2/ssl
   backup:
