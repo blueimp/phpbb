@@ -8,17 +8,17 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD
     # Reduce memory usage with the minimum table definition cache:
-    command: "mysqld --table-definition-cache=400"
+    command: mysqld --table-definition-cache=400
   phpbb:
     image: blueimp/phpbb:3.1
     ports:
-      - "80:80"
-      - "443:443"
+      - 80:80
+      - 443:443
     environment:
       - DBPASSWD
     hostname: $SERVER_NAME
     volumes:
-      - "./ssl:/etc/apache2/ssl"
+      - ./ssl:/etc/apache2/ssl
   backup:
     image: blueimp/phpbb-s3-backup
     environment:
