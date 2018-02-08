@@ -208,7 +208,7 @@ docker exec -it phpbb_phpbb_1 sh -c \
 Open a browser with the server URL:
 
 ```sh
-open "http://$SERVER_NAME"
+open "https://$SERVER_NAME"
 ```
 
 Follow the installation instructions, skipping the upload of `config.php`.  
