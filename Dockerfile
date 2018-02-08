@@ -1,6 +1,6 @@
 # phpBB Dockerfile
 
-FROM php:5.6-apache
+FROM php:7-apache
 
 # Do a dist-upgrade and install the required packages:
 RUN export DEBIAN_FRONTEND=noninteractive \
