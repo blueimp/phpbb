@@ -23,4 +23,4 @@ VERSION=$(curl -sL "$VERSIONS_URL" |
   jq -r '.stable["'"${BASE_VERSION:-3.1}"'"].current')
 
 # Download and extract the phpBB package into the given directory:
-curl -L "$RELEASE_BASE_URL/phpBB-$VERSION.tar.bz2" | tar xvj -C "${1:-$PWD}"
+curl -sL "$RELEASE_BASE_URL/phpBB-$VERSION.tar.bz2" | tar xj -C "${1:-$PWD}"
