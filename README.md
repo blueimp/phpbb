@@ -174,14 +174,14 @@ export PHPBB_INSTALLED=false
 Start the MySQL and phpBB containers:
 
 ```sh
-docker-compose -p phpbb up -d
+docker-compose up -d
 ```
 
 ### MySQL
 Enter the MySQL server CLI:
 
 ```sh
-docker-compose -p phpbb exec mysql mysql --password="$MYSQL_ROOT_PASSWORD"
+docker-compose exec mysql mysql --password="$MYSQL_ROOT_PASSWORD"
 ```
 
 Execute the following SQL script, replacing "password2" with the `$DBPASSWD`
@@ -247,7 +247,7 @@ unset PHPBB_INSTALLED
 Recreate the phpBB container:
 
 ```sh
-docker-compose -p phpbb up -d --force-recreate phpbb
+docker-compose up -d --force-recreate phpbb
 ```
 
 #### Database migration
@@ -255,7 +255,7 @@ After updating to a new phpBB version, run the following command to update the
 database schema and increment the version number:
 
 ```sh
-docker-compose -p phpbb exec phpbb php bin/phpbbcli.php db:migrate
+docker-compose exec phpbb php bin/phpbbcli.php db:migrate
 ```
 
 Database migration can also be done automatically on container start by setting
