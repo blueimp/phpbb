@@ -29,4 +29,8 @@ elif [ "$AUTO_DB_MIGRATE" = true ]; then
 fi
 
 # Run Apache with HTTPS if the SSL directory is available:
-exec apache2-foreground "$(test -d /etc/apache2/ssl && printf %s -DSSL)" "$@"
+if [ -d /etc/apache2/ssl ]; then
+  set -- -DSSL "$@"
+fi
+
+exec apache2-foreground "$@"
