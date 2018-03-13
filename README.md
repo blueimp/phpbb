@@ -16,7 +16,7 @@ This is used as `hostname` option for the phpBB Docker container.
 
 ### SSL files
 > If you don't require HTTPS, skip this section and remove the SSL volume mount
-from the `phpbb` container definition in `docker-compose.yml`.
+> from the `phpbb` container definition in `docker-compose.yml`.
 
 Create the `ssl` directory:
 
@@ -65,7 +65,7 @@ TABLE_PREFIX='phpbb_'
 
 ### Scheduled backups to Amazon S3
 > If you don't require scheduled backups to Amazon S3, skip this section and
-remove the `backup` container definition in `docker-compose.yml`.
+> remove the `backup` container definition in `docker-compose.yml`.
 
 Define a Bucket name and AWS credentials for scheduled backups to Amazon S3:
 
